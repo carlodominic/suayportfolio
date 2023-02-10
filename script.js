@@ -18,7 +18,43 @@ $(document).ready(function(){
         $('html').animate({scrollTop: 0})
     });
 
+    /******************************/
 
+    $('.1').click(function(){
+        $('html, body').animate({
+            scrollTop: $("#home").offset().top
+        }, 500, 'swing');
+    });
+
+    $('.2').click(function(){
+        $('html, body').animate({
+            scrollTop: $("#about").offset().top
+        }, 500, 'swing');
+    });
+
+    $('.3').click(function(){
+        $('html, body').animate({
+            scrollTop: $("#services").offset().top
+        }, 500, 'swing');
+    });
+
+    $('.4').click(function(){
+        $('html, body').animate({
+            scrollTop: $("#skills").offset().top
+        }, 500, 'swing');
+    });
+
+    $('.5').click(function(){
+        $('html, body').animate({
+            scrollTop: $("#teams").offset().top
+        }, 500, 'swing');
+    });
+
+    $('.6').click(function(){
+        $('html, body').animate({
+            scrollTop: $("#contact").offset().top
+        }, 500, 'swing');
+    });
 
     /******************************/
     

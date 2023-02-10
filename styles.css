@@ -7,10 +7,6 @@
     text-decoration: none;
 }
 
-html{
-    scroll-behavior: smooth;    
-}
-
 .max-width{
     max-width: 1300px;
     padding: 0 80px;
