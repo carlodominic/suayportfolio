@@ -56,11 +56,72 @@
                 </div>
                 <div class="column right">
                     <div class="text">I'm Carlo and I'm a <span class="typing-2"></span></div>
-                    <p>Hi, my name is Carlo Dominic Suaybaguio. I am an IT student from University of Science and Technology of Southern Philippines.
-                        In my free time, I enjoy exercising to achieve a certain body fit and I also watch anime's and movies that peaks my interest in other words a certain movie that will grant me knowledge. 
-                        I am still studying in college yet I already have experiences that is computer related like being an NCII passer on TESDA Electronics Products Assembly and Servicing on my junior high days. 
-                        To sum it up, I am working hard to achieve what I want in my life and I am passionate about learning everything that I can that will be used in my future. If you want to learn more about me, 
-                        feel free to check my CV or message me below the page.</p>
+                    <p>from tkinter import *
+import sqlite3
+from tkinter import ttk
+
+win = Tk()
+win.title("Suaybaguio Tree View Widget")
+s=ttk.Style()
+s.theme_use('clam')
+
+###############################################################
+
+tree=ttk.Treeview(win, column=("c1","c2","c2"), show='headings', height=5)
+tree.column("# 1", anchor=CENTER)
+tree.heading("# 1", text="Item ID")
+tree.column("# 2", anchor=CENTER)
+tree.heading("# 2", text="Item Name")
+tree.column("# 3", anchor=CENTER)
+tree.heading("# 3", text="Price")
+
+conn=sqlite3.connect('carlo.db')
+cursor = conn.execute("select * from products")
+for row in cursor:
+    tree.insert('', 'end', text='1', values=(str(row[0]), row[1], str(row[2])))
+
+tree.grid(row=4, column=0, columnspan=2)
+
+###############################################################
+
+def save_rec():
+    global e1
+    global e2
+    global e3
+    global tree
+    conn = sqlite3.connect('carlo.db')
+    itemId=e1.get()
+    itemName=e2.get()
+    price=e3.get()
+    conn.execute("INSERT INTO products VALUES (" + itemId + ", '" + itemName + "', " + price + ")")
+    tree.insert('', 'end', text="1", values=(str(itemId), itemName, str(price)))
+    conn.commit()
+    conn.close()
+
+l1=Label(win, text ="Enter ID")
+l1.grid(row=0, column=0)
+e1=Entry(win, width=40)
+e1.grid(row=0, column=1)
+l2=Label(win, text ="Enter Product")
+l2.grid(row=1, column=0)
+e2=Entry(win, width=40)
+e2.grid(row=1, column=1)
+l3=Label(win, text ="Price")
+l3.grid(row=2, column=0)
+e3=Entry(win, width=40)
+e3.grid(row=2, column=1)
+
+b1=ttk.Button(win, text ="Add Record", command=save_rec)
+b1.grid(row=3, column=0)
+b2=ttk.Button(win, text ="Delete Record")
+b2.grid(row=3, column=1)
+
+e1.focus_set()
+
+###############################################################
+
+conn.close()
+win.mainloop()</p>
                     <a href="file/wat.pdf" target="_blank">Download CV</a>
                 </div>
             </div>
